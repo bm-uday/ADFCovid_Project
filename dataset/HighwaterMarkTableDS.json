@@ -1,0 +1,28 @@
+{
+	"name": "HighwaterMarkTableDS",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "TABLENAME",
+				"type": "varchar"
+			},
+			{
+				"name": "MODIFIEDDATE",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "HIGHWATERMARK"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

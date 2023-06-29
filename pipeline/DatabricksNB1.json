@@ -1,0 +1,33 @@
+{
+	"name": "DatabricksNB1",
+	"properties": {
+		"activities": [
+			{
+				"name": "Notebook1",
+				"type": "DatabricksNotebook",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": "/Users/udayprakashbm.17ec@saividya.ac.in/Session25",
+					"baseParameters": {
+						"filepathParam": "dbfs:/FileStore/shared_uploads/udayprakashbm.17ec@saividya.ac.in/Order_xsqk4E7OcD.csv"
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureDatabricks1",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2023-05-20T04:18:53Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

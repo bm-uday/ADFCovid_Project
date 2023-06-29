@@ -1,0 +1,171 @@
+{
+	"name": "S4P1_ADLS_CSV_TO_BLOB_JSON",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy data1",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "JsonSink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings"
+						},
+						"formatSettings": {
+							"type": "JsonWriteSettings"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "Region",
+									"type": "String"
+								},
+								"sink": {
+									"path": "$['NewRegion']"
+								}
+							},
+							{
+								"source": {
+									"name": "Country",
+									"type": "String"
+								},
+								"sink": {
+									"path": "$['Country']"
+								}
+							},
+							{
+								"source": {
+									"name": "ItemType",
+									"type": "String"
+								},
+								"sink": {
+									"path": "$['NewItemType']"
+								}
+							},
+							{
+								"source": {
+									"name": "SalesChannel",
+									"type": "String"
+								},
+								"sink": {
+									"path": "$['SalesChannel']"
+								}
+							},
+							{
+								"source": {
+									"name": "OrderPriority",
+									"type": "String"
+								},
+								"sink": {
+									"path": "$['OrderPriority']"
+								}
+							},
+							{
+								"source": {
+									"name": "OrderID",
+									"type": "String"
+								},
+								"sink": {
+									"path": "$['OrderID']"
+								}
+							},
+							{
+								"source": {
+									"name": "UnitsSold",
+									"type": "String"
+								},
+								"sink": {
+									"path": "$['UnitsSold']"
+								}
+							},
+							{
+								"source": {
+									"name": "UnitPrice",
+									"type": "String"
+								},
+								"sink": {
+									"path": "$['UnitPrice']"
+								}
+							},
+							{
+								"source": {
+									"name": "UnitCost",
+									"type": "String"
+								},
+								"sink": {
+									"path": "$['UnitCost']"
+								}
+							},
+							{
+								"source": {
+									"name": "TotalRevenue",
+									"type": "String"
+								},
+								"sink": {
+									"path": "$['TotalRevenue']"
+								}
+							},
+							{
+								"source": {
+									"name": "TotalCost",
+									"type": "String"
+								},
+								"sink": {
+									"path": "$['TotalCost']"
+								}
+							},
+							{
+								"source": {
+									"name": "TotalProfit",
+									"type": "String"
+								},
+								"sink": {
+									"path": "$['TotalProfit']"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "ADLS_CSV_DS",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "BLOB_JSON_DS",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2023-05-12T14:39:10Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

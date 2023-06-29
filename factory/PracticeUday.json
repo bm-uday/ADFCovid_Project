@@ -1,0 +1,17 @@
+{
+	"name": "PracticeUday",
+	"properties": {
+		"globalParameters": {
+			"dbusername": {
+				"type": "string",
+				"value": "azure"
+			}
+		}
+	},
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "b0ac1915-53bb-4f95-b97b-6b3e0524f84c",
+		"tenantId": "6610e945-128a-4fa6-a2fa-8a2c75eb6e1e"
+	}
+}

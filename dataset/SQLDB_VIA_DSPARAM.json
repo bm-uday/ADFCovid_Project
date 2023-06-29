@@ -1,0 +1,34 @@
+{
+	"name": "SQLDB_VIA_DSPARAM",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "SQLDB_LS_VIA_LSPARAM",
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"username": {
+					"value": "@dataset().usernameDSparam",
+					"type": "Expression"
+				}
+			}
+		},
+		"parameters": {
+			"usernameDSparam": {
+				"type": "string"
+			},
+			"tableName": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "saleslt",
+			"table": {
+				"value": "@dataset().tableName",
+				"type": "Expression"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

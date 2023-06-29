@@ -1,0 +1,186 @@
+{
+	"name": "ADLS_JSON_DS",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ADLS_LS",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "JSON_To_Parquet",
+				"fileSystem": "landing"
+			}
+		},
+		"schema": {
+			"type": "object",
+			"properties": {
+				"commitInfo": {
+					"type": "object",
+					"properties": {
+						"timestamp": {
+							"type": "integer"
+						},
+						"userId": {
+							"type": "string"
+						},
+						"userName": {
+							"type": "string"
+						},
+						"operation": {
+							"type": "string"
+						},
+						"operationParameters": {
+							"type": "object",
+							"properties": {
+								"mode": {
+									"type": "string"
+								},
+								"partitionBy": {
+									"type": "string"
+								}
+							}
+						},
+						"notebook": {
+							"type": "object",
+							"properties": {
+								"notebookId": {
+									"type": "string"
+								}
+							}
+						},
+						"clusterId": {
+							"type": "string"
+						},
+						"isolationLevel": {
+							"type": "string"
+						},
+						"isBlindAppend": {
+							"type": "boolean"
+						},
+						"operationMetrics": {
+							"type": "object",
+							"properties": {
+								"numFiles": {
+									"type": "string"
+								},
+								"numOutputRows": {
+									"type": "string"
+								},
+								"numOutputBytes": {
+									"type": "string"
+								}
+							}
+						},
+						"engineInfo": {
+							"type": "string"
+						},
+						"txnId": {
+							"type": "string"
+						}
+					}
+				},
+				"protocol": {
+					"type": "object",
+					"properties": {
+						"minReaderVersion": {
+							"type": "integer"
+						},
+						"minWriterVersion": {
+							"type": "integer"
+						}
+					}
+				},
+				"metaData": {
+					"type": "object",
+					"properties": {
+						"id": {
+							"type": "string"
+						},
+						"format": {
+							"type": "object",
+							"properties": {
+								"provider": {
+									"type": "string"
+								},
+								"options": {
+									"type": "object"
+								}
+							}
+						},
+						"schemaString": {
+							"type": "string"
+						},
+						"partitionColumns": {
+							"type": "array"
+						},
+						"configuration": {
+							"type": "object"
+						},
+						"createdTime": {
+							"type": "integer"
+						}
+					}
+				},
+				"add": {
+					"type": "object",
+					"properties": {
+						"path": {
+							"type": "string"
+						},
+						"partitionValues": {
+							"type": "object"
+						},
+						"size": {
+							"type": "integer"
+						},
+						"modificationTime": {
+							"type": "integer"
+						},
+						"dataChange": {
+							"type": "boolean"
+						},
+						"stats": {
+							"type": "string"
+						},
+						"tags": {
+							"type": "object",
+							"properties": {
+								"INSERTION_TIME": {
+									"type": "string"
+								},
+								"MIN_INSERTION_TIME": {
+									"type": "string"
+								},
+								"MAX_INSERTION_TIME": {
+									"type": "string"
+								},
+								"OPTIMIZE_TARGET_SIZE": {
+									"type": "string"
+								}
+							}
+						}
+					}
+				},
+				"CustomerID": {
+					"type": "integer"
+				},
+				"AddressID": {
+					"type": "integer"
+				},
+				"AddressType": {
+					"type": "string"
+				},
+				"rowguid": {
+					"type": "string"
+				},
+				"ModifiedDate": {
+					"type": "string"
+				}
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

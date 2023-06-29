@@ -1,0 +1,16 @@
+{
+	"name": "ADLS_newTable",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"table": "NewTable"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

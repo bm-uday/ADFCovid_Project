@@ -1,0 +1,17 @@
+{
+	"name": "customerdb_ds_clone",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "",
+			"table": "customerclone"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
