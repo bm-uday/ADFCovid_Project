@@ -1,0 +1,6 @@
+{
+	"dbusername": {
+		"type": "string",
+		"value": "azure"
+	}
+}
