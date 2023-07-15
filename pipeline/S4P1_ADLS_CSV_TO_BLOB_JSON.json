@@ -63,7 +63,7 @@
 									"type": "String"
 								},
 								"sink": {
-									"path": "$['NewItemType']"
+									"path": "$['ItemType']"
 								}
 							},
 							{
