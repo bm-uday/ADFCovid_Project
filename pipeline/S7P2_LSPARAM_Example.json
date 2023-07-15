@@ -46,7 +46,7 @@
 						"referenceName": "SQLDB_VIA_DSPARAM",
 						"type": "DatasetReference",
 						"parameters": {
-							"usernameDSparam": "azurea",
+							"usernameDSparam": "azure",
 							"tableName": "customer"
 						}
 					}
