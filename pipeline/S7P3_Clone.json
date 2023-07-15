@@ -31,7 +31,7 @@
 						"type": "DelimitedTextSink",
 						"storeSettings": {
 							"type": "AzureBlobFSWriteSettings",
-							"copyBehavior": "FlattenHierarchy"
+							"copyBehavior": "MergeFiles"
 						},
 						"formatSettings": {
 							"type": "DelimitedTextWriteSettings",
@@ -51,8 +51,11 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "ADLS_customer_Folder",
-						"type": "DatasetReference"
+						"referenceName": "ADLS_CSV_DynamicFolder_output",
+						"type": "DatasetReference",
+						"parameters": {
+							"folderPath": "Customer"
+						}
 					}
 				],
 				"outputs": [
@@ -60,7 +63,7 @@
 						"referenceName": "ADLS_CSV_DynamicFolder_output",
 						"type": "DatasetReference",
 						"parameters": {
-							"folderPath": "customer_clone_may13"
+							"folderPath": "customer_clone_july15"
 						}
 					}
 				]

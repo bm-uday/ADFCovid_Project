@@ -127,7 +127,7 @@
 												"referenceName": "ADLS_CSV_DynamicFolder_output",
 												"type": "DatasetReference",
 												"parameters": {
-													"folderPath": "product_files_may13"
+													"folderPath": "abcd"
 												}
 											}
 										]
