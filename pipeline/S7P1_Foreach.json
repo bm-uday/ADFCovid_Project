@@ -13,7 +13,6 @@
 						"type": "Expression"
 					},
 					"isSequential": false,
-					"batchCount": 2,
 					"activities": [
 						{
 							"name": "Copy data1",
