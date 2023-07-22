@@ -1,0 +1,96 @@
+{
+	"name": "S11_DF1_REVISION",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "ADLS_Order_DS",
+						"type": "DatasetReference"
+					},
+					"name": "OrderCSVFile"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "ADLS_JSON_Output",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "select1"
+				},
+				{
+					"name": "filter1"
+				},
+				{
+					"name": "derivedColumn1"
+				},
+				{
+					"name": "aggregate1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          Region as string,",
+				"          Country as string,",
+				"          ItemType as string,",
+				"          SalesChannel as string,",
+				"          OrderPriority as string,",
+				"          OrderID as integer,",
+				"          UnitsSold as short,",
+				"          UnitPrice as double,",
+				"          UnitCost as double,",
+				"          TotalRevenue as double,",
+				"          TotalCost as double,",
+				"          TotalProfit as double",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> OrderCSVFile",
+				"OrderCSVFile select(mapColumn(",
+				"          NewRegion = Region,",
+				"          Country,",
+				"          ItemType,",
+				"          SalesChannel,",
+				"          OrderPriority,",
+				"          OrderID,",
+				"          UnitsSold,",
+				"          UnitPrice,",
+				"          UnitCost,",
+				"          TotalRevenue,",
+				"          TotalCost",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select1",
+				"select1 filter(SalesChannel=='Online') ~> filter1",
+				"filter1 derive(FlagIndia = Country=='India') ~> derivedColumn1",
+				"derivedColumn1 aggregate(groupBy(Country),",
+				"     TotalUnitsSold = sum(UnitsSold)) ~> aggregate1",
+				"aggregate1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          commitInfo as (timestamp as integer, userId as string, userName as string, operation as string, operationParameters as (mode as string, partitionBy as string), notebook as (notebookId as string), clusterId as string, isolationLevel as string, isBlindAppend as boolean, operationMetrics as (numFiles as string, numOutputRows as string, numOutputBytes as string), engineInfo as string, txnId as string),",
+				"          protocol as (minReaderVersion as integer, minWriterVersion as integer),",
+				"          metaData as (id as string, format as (provider as string, options as ({} as string)), schemaString as string, partitionColumns as string[], configuration as ({} as string), createdTime as integer),",
+				"          add as (path as string, partitionValues as ({} as string), size as integer, modificationTime as integer, dataChange as boolean, stats as string, tags as (INSERTION_TIME as string, MIN_INSERTION_TIME as string, MAX_INSERTION_TIME as string, OPTIMIZE_TARGET_SIZE as string)),",
+				"          CustomerID as integer,",
+				"          AddressID as integer,",
+				"          AddressType as string,",
+				"          rowguid as string,",
+				"          ModifiedDate as string",
+				"     ),",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink1"
+			]
+		}
+	}
+}
